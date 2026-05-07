@@ -1,224 +1,431 @@
 <!DOCTYPE html>
 <html lang="fr">
+
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Appar-Noe - Réservation d'appartements</title>
+
+<title>Appar-Noe | Réservation d'appartements</title>
 
 <style>
-* {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-    font-family: 'Segoe UI', sans-serif;
+
+/* ================= RESET ================= */
+
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+    font-family:'Segoe UI', sans-serif;
 }
 
-body {
-    background: #f5f7fa;
+body{
+    background:#f4f7fb;
+    color:#222;
 }
 
-/* HEADER */
-header {
-    background: linear-gradient(to right, #0f2027, #203a43, #2c5364);
-    color: white;
-    padding: 20px 50px;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
+/* ================= HEADER ================= */
+
+header{
+    background:linear-gradient(to right,#0f2027,#203a43,#2c5364);
+    padding:20px 60px;
+    color:white;
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    position:sticky;
+    top:0;
+    z-index:100;
 }
 
-header h1 {
-    font-size: 24px;
+.logo{
+    font-size:28px;
+    font-weight:bold;
 }
 
-nav a {
-    color: white;
-    margin-left: 20px;
-    text-decoration: none;
-    font-weight: bold;
+nav a{
+    color:white;
+    text-decoration:none;
+    margin-left:25px;
+    font-weight:500;
+    transition:0.3s;
 }
 
-nav a:hover {
-    color: #00c6ff;
+nav a:hover{
+    color:#00c6ff;
 }
 
-/* HERO */
-.hero {
-    height: 90vh;
-    background: url('https://images.unsplash.com/photo-1560448204-e02f11c3d0e2') no-repeat center/cover;
-    display: flex;
-    justify-content: center;
-    align-items: center;
+/* ================= HERO ================= */
+
+.hero{
+    height:90vh;
+    background:
+    linear-gradient(rgba(0,0,0,0.5),rgba(0,0,0,0.5)),
+    url('https://images.unsplash.com/photo-1560448204-e02f11c3d0e2?auto=format&fit=crop&w=1500');
+    background-size:cover;
+    background-position:center;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    text-align:center;
+    padding:20px;
 }
 
-.hero-content {
-    background: rgba(0,0,0,0.6);
-    padding: 40px;
-    border-radius: 10px;
-    color: white;
-    text-align: center;
+.hero-content{
+    color:white;
+    max-width:700px;
 }
 
-.hero-content h2 {
-    font-size: 40px;
-    margin-bottom: 10px;
+.hero-content h1{
+    font-size:55px;
+    margin-bottom:20px;
 }
 
-/* SEARCH BOX */
-.search-box {
-    margin-top: 20px;
+.hero-content p{
+    font-size:20px;
+    margin-bottom:30px;
 }
 
-.search-box input, .search-box button {
-    padding: 12px;
-    border: none;
-    margin: 5px;
-    border-radius: 5px;
+/* ================= SEARCH ================= */
+
+.search-box{
+    padding:20px;
+    border-radius:15px;
+    display:flex;
+    gap:10px;
+    justify-content:center;
+    flex-wrap:wrap;
+    box-shadow:0 10px 25px rgba(0,0,0,0.2);
 }
 
-.search-box input {
-    width: 200px;
+.search-box select,
+.search-box button{
+    padding:14px;
+    border:none;
+    border-radius:8px;
+    font-size:15px;
 }
 
-.search-box button {
-    background: #00c6ff;
-    color: white;
-    cursor: pointer;
+.search-box select{
+    width:240px;
+    border:1px solid #ccc;
 }
 
-/* APARTMENTS */
-.section {
-    padding: 50px;
-    text-align: center;
+.search-box button{
+    background:#00c6ff;
+    color:white;
+    cursor:pointer;
+    font-weight:bold;
+    transition:0.3s;
 }
 
-.cards {
-    display: flex;
-    gap: 20px;
-    justify-content: center;
-    flex-wrap: wrap;
+.search-box button:hover{
+    background:#0095cc;
 }
 
-.card {
-    background: white;
-    width: 300px;
-    border-radius: 10px;
-    overflow: hidden;
-    box-shadow: 0 5px 15px rgba(0,0,0,0.1);
-    transition: 0.3s;
+/* ================= SECTION ================= */
+
+.section{
+    padding:80px 40px;
 }
 
-.card:hover {
-    transform: translateY(-10px);
+.section-title{
+    text-align:center;
+    font-size:35px;
+    margin-bottom:50px;
+    color:#0f2027;
+    position:relative;
 }
 
-.card img {
-    width: 100%;
-    height: 200px;
-    object-fit: cover;
+.section-title::after{
+    content:"";
+    width:100px;
+    height:4px;
+    background:#00c6ff;
+    display:block;
+    margin:12px auto;
+    border-radius:10px;
 }
 
-.card-content {
-    padding: 20px;
+/* ================= CARDS ================= */
+
+.cards{
+    display:flex;
+    justify-content:center;
+    flex-wrap:wrap;
+    gap:30px;
 }
 
-.card-content h3 {
-    margin-bottom: 10px;
+.card{
+    width:320px;
+    background:white;
+    border-radius:15px;
+    overflow:hidden;
+    box-shadow:0 8px 20px rgba(0,0,0,0.1);
+    transition:0.4s;
 }
 
-.price {
-    color: #00c6ff;
-    font-weight: bold;
+.card:hover{
+    transform:translateY(-12px) scale(1.02);
 }
 
-.btn {
-    display: inline-block;
-    margin-top: 10px;
-    padding: 10px 20px;
-    background: #00c6ff;
-    color: white;
-    border-radius: 5px;
-    text-decoration: none;
+.card img{
+    width:100%;
+    height:220px;
+    object-fit:cover;
 }
 
-/* FOOTER */
-footer {
-    background: #2c5364;
-    color: white;
-    text-align: center;
-    padding: 20px;
+.card-content{
+    padding:20px;
 }
+
+.card-content h3{
+    margin-bottom:10px;
+    color:#0f2027;
+}
+
+.card-content p{
+    margin-bottom:10px;
+    color:#555;
+}
+
+.price{
+    color:#00c6ff;
+    font-size:20px;
+    font-weight:bold;
+}
+
+.btn{
+    width:100%;
+    padding:12px;
+    border:none;
+    background:#00c6ff;
+    color:white;
+    border-radius:8px;
+    cursor:pointer;
+    font-size:15px;
+    margin-top:10px;
+    transition:0.3s;
+}
+
+.btn:hover{
+    background:#0095cc;
+}
+
+/* ================= RESERVATIONS ================= */
+
+#reservations{
+    display:flex;
+    justify-content:center;
+    flex-wrap:wrap;
+    gap:20px;
+}
+
+.resv{
+    background:white;
+    width:300px;
+    padding:20px;
+    border-radius:12px;
+    box-shadow:0 5px 15px rgba(0,0,0,0.1);
+}
+
+.resv p{
+    margin-bottom:8px;
+}
+
+.resv button{
+    width:100%;
+    padding:10px;
+    border:none;
+    background:red;
+    color:white;
+    border-radius:6px;
+    cursor:pointer;
+    margin-top:10px;
+}
+
+/* ================= FORMULAIRE ================= */
+
+.form-reservation{
+    position:fixed;
+    top:0;
+    left:0;
+    width:100%;
+    height:100%;
+    background:rgba(0,0,0,0.6);
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    z-index:1000;
+}
+
+.form-box{
+    background:white;
+    width:350px;
+    padding:25px;
+    border-radius:15px;
+    animation:popup 0.3s ease;
+}
+
+@keyframes popup{
+    from{
+        transform:scale(0.7);
+        opacity:0;
+    }
+    to{
+        transform:scale(1);
+        opacity:1;
+    }
+}
+
+.form-box h3{
+    margin-bottom:20px;
+    text-align:center;
+    color:#0f2027;
+}
+
+.form-box input{
+    width:100%;
+    padding:12px;
+    margin-bottom:15px;
+    border:1px solid #ccc;
+    border-radius:8px;
+}
+
+.form-buttons{
+    display:flex;
+    gap:10px;
+}
+
+.form-buttons button{
+    flex:1;
+    padding:12px;
+    border:none;
+    border-radius:8px;
+    cursor:pointer;
+    font-weight:bold;
+}
+
+#valider{
+    background:#00c6ff;
+    color:white;
+}
+
+#fermer{
+    background:red;
+    color:white;
+}
+
+/* ================= FOOTER ================= */
+
+footer{
+    background:#0f2027;
+    color:white;
+    text-align:center;
+    padding:25px;
+    margin-top:50px;
+}
+
+/* ================= RESPONSIVE ================= */
+
+@media(max-width:768px){
+
+    header{
+        padding:20px;
+        flex-direction:column;
+        gap:15px;
+    }
+
+    .hero-content h1{
+        font-size:38px;
+    }
+
+    .search-box{
+        flex-direction:column;
+    }
+
+    .search-box select,
+    .search-box button{
+        width:100%;
+    }
+
+}
+
 </style>
 
 </head>
 
 <body>
 
+<!-- HEADER -->
 <header>
-    <h1>Appar-Noe</h1>
+
+    <div class="logo">Appar-Noe</div>
+
     <nav>
         <a href="#">Accueil</a>
         <a href="#">Appartements</a>
-        <a href="#">Services</a>
+        <a href="#">Réservations</a>
         <a href="#">Contact</a>
     </nav>
+
 </header>
 
+<!-- HERO -->
 <section class="hero">
+
     <div class="hero-content">
-        <h2>Trouvez votre appartement idéal</h2>
-        <p>Réservez facilement et rapidement</p>
+
+        <h1>Trouvez votre appartement idéal</h1>
+
+        <p>Réservez rapidement des appartements modernes au Bénin</p>
 
         <div class="search-box">
-            <input type="text" placeholder="Ville">
-            <input type="date">
-            <input type="date">
-            <button>Rechercher</button>
+
+            <select id="ville">
+
+                <option value="">Choisir une ville</option>
+
+                <option value="cotonou">Cotonou</option>
+                <option value="porto-novo">Porto-Novo</option>
+                <option value="parakou">Parakou</option>
+
+            </select>
+
+            <button id="rechercher">Rechercher</button>
+
         </div>
+
     </div>
+
 </section>
 
+<!-- APPARTEMENTS -->
 <section class="section">
-    <h2>Nos Appartements</h2>
 
-    <div class="cards">
+    <h2 class="section-title">Nos Appartements</h2>
 
-        <div class="card">
-            <img src="https://images.unsplash.com/photo-1502672260266-1c1ef2d93688">
-            <div class="card-content">
-                <h3>Appartement Luxe</h3>
-                <p>2 chambres • WiFi • Piscine</p>
-                <p class="price">50 000 FCFA / nuit</p>
-                <a href="#" class="btn">Réserver</a>
-            </div>
-        </div>
+    <div class="cards"></div>
 
-        <div class="card">
-            <img src="https://images.unsplash.com/photo-1522708323590-d24dbb6b0267">
-            <div class="card-content">
-                <h3>Studio Moderne</h3>
-                <p>1 chambre • Climatisation</p>
-                <p class="price">30 000 FCFA / nuit</p>
-                <a href="#" class="btn">Réserver</a>
-            </div>
-        </div>
-
-        <div class="card">
-            <img src="https://images.unsplash.com/photo-1493809842364-78817add7ffb">
-            <div class="card-content">
-                <h3>Appartement Familial</h3>
-                <p>3 chambres • Cuisine équipée</p>
-                <p class="price">70 000 FCFA / nuit</p>
-                <a href="#" class="btn">Réserver</a>
-            </div>
-        </div>
-
-    </div>
 </section>
 
+<!-- RESERVATIONS -->
+<section class="section">
+
+    <h2 class="section-title">Mes Réservations</h2>
+
+    <div id="reservations"></div>
+
+</section>
+
+<!-- FOOTER -->
 <footer>
+
     <p>© 2026 Appar-Noe | Réservation d'appartements</p>
+
 </footer>
+
+<!-- JS -->
+<script src="script.js"></script>
 
 </body>
 </html>
