@@ -51,7 +51,7 @@ let appartements = [
         prix: "40 000 FCFA / nuit",
         image: "https://images.unsplash.com/photo-1484154218962-a197022b5858",
         note: "⭐ 4.6",
-        disponible: true
+        disponible: false
     },
 
     {
