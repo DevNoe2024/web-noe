@@ -61,7 +61,7 @@ let appartements = [
         prix: "25 000 FCFA / nuit",
         image: "https://images.unsplash.com/photo-1494526585095-c41746248156",
         note: "⭐ 4.2",
-        disponible: false
+        disponible: true
     },
 
     // ================= PARAKOU =================
